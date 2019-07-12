@@ -1,0 +1,57 @@
+package @Package@;
+
+import @ModelPath@;
+import @RepositoryPath@;
+import @ServicePath@;
+import com.morefun.phili.common.common.conts.RequestCode;
+import com.morefun.phili.common.common.exception.CustomRuntimeException;
+import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * @Model@Service 实现类
+ */
+@Slf4j
+@Service
+public class @Model@ServiceImpl implements @Model@Service {
+
+    @Autowired
+    private @Model@Repository @model@Repository;
+
+    @Override
+    @Transactional(readOnly = true)
+    public @Model@ get(@NonNull String id) {
+        final @Model@ model = @model@Repository.findById(id).orElseThrow(()-> new CustomRuntimeException(RequestCode.USER_NOT_EXISTS, String.format("id为[%s]资源不存在", id)));
+        return model;
+    }
+
+    @Override
+    public @Model@ create(@Model@ model) {
+        return @model@Repository.save(model);
+    }
+
+    @Override
+    public List<@Model@> create(List<@Model@> models) {
+        return @model@Repository.saveAll(models);
+    }
+
+    @Override
+    public @Model@ update(@Model@ model) {
+        return @model@Repository.save(model);
+    }
+
+    @Override
+    public void delete(@NonNull String id) {
+        @model@Repository.deleteById(id);
+    }
+
+    @Override
+    public void delete(List<@Model@> models) {
+        @model@Repository.deleteInBatch(models);
+    }
+}

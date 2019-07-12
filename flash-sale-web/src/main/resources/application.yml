@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: web-service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/flashsale?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&autoReconnect=true
+    #url: jdbc:mysql://192.168.1.197:3306/phili?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    #password: root
+    test-while-idle: true
+    max-wait-millis: 30000
+    validation-query: 'SELECT 1'
+    time-between-eviction-runs-millis: 20000
+    min-evictable-idle-time-millis: 28700
+    idle-timeout: 3
+    initial-size: 20
+    max-idle: 50
+    max-activ: 300
+    maximum-pool-size: 350
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate.ddl-auto: update
+    hibernate.show-sql: true

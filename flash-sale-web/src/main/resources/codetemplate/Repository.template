@@ -1,0 +1,11 @@
+package @Package@;
+
+import @ModelPath@;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+/**
+ * @Model@Repository
+ */
+public interface @Model@Repository extends JpaRepository<@Model@, String> {
+
+}
