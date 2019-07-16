@@ -1,13 +1,13 @@
-package @Package@;
+package art.redoc.service;
 
-import @ModelPath@;
+import art.redoc.model.FlashSalePlan;
 
 import java.util.List;
 
 /**
- * @Model@Service
+ * FlashSalePlanService
  */
-public interface @Model@Service {
+public interface FlashSalePlanService {
 
     /**
      * 根据ID获取资源
@@ -15,7 +15,7 @@ public interface @Model@Service {
      * @param id 资源实例ID
      * @return id所指向的资源实例
      */
-    @Model@ get(Long id);
+    FlashSalePlan get(Long id);
 
     /**
      * 创建
@@ -23,7 +23,7 @@ public interface @Model@Service {
      * @param model 资源实例
      * @return 创建后的对象
      */
-    @Model@ create(@Model@ model);
+    FlashSalePlan create(FlashSalePlan model);
 
     /**
      * 批量创建
@@ -31,7 +31,7 @@ public interface @Model@Service {
      * @param models 资源实例
      * @return 创建后的对象
      */
-    List<@Model@> create(List<@Model@> models);
+    List<FlashSalePlan> create(List<FlashSalePlan> models);
 
     /**
      * 更新
@@ -39,7 +39,7 @@ public interface @Model@Service {
      * @param model 编辑后的资源实例
      * @return 修改后的对象
      */
-    @Model@ update(@Model@ model);
+    FlashSalePlan update(FlashSalePlan model);
     
     /**
      * 删除
@@ -53,6 +53,6 @@ public interface @Model@Service {
      *
      * @param models 资源实例集合
      */
-    void delete(List<@Model@> models);
+    void delete(List<FlashSalePlan> models);
 
 }

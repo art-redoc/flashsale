@@ -1,41 +1,40 @@
-package @Package@;
+package art.redoc.controller;
 
-import javax.validation.Valid;
-
+import art.redoc.core.dto.PageResultDTO;
+import art.redoc.core.dto.ResultDTO;
+import art.redoc.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import art.redoc.convertor.UserConvertor;
+import art.redoc.dto.UserDTO;
+import art.redoc.model.User;
+import art.redoc.repository.UserRepository;
 
-import com.morefun.phili.common.common.dto.PageResultDTO;
-import com.morefun.phili.common.common.dto.ResultDTO;
-
-import @ConvertorPath@;
-import @DTOPath@;
-import @ModelPath@;
-import @ServicePath@;
-import @RepositoryPath@;
-
-import lombok.extern.slf4j.Slf4j;
+import javax.validation.Valid;
 
 /**
- * @Model@的管理接口
+ * User的管理接口
  *
  * @author auto
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/@model@")
-public class @Model@Controller {
+@RequestMapping("/api/user")
+public class UserController {
     @Autowired
-    private @Model@Service @model@Service;
+    private UserService userService;
     @Autowired
-    private @Model@Convertor @model@Convertor;
+    private UserConvertor userConvertor;
+    @Autowired
+    private UserRepository userRepository;
 
     /**
      * 获取分页数据
@@ -44,9 +43,9 @@ public class @Model@Controller {
      * @return 分页数据
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public PageResultDTO<@Model@DTO> search(final Pageable pageable) {
-        final Page<@Model@> models = this.@model@Repository.findAll(pageable);
-        return this.@model@Convertor.toResultDTO(models);
+    public PageResultDTO<UserDTO> search(final Pageable pageable) {
+        final Page<User> models = this.userRepository.findAll(pageable);
+        return this.userConvertor.toResultDTO(models);
     }
 
     /**
@@ -56,37 +55,38 @@ public class @Model@Controller {
      * @return 资源详细
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResultDTO<@Model@DTO> get(@PathVariable final Long id) {
-        final @Model@ model = this.@model@Service.get(id);
-        return this.@model@Convertor.toResultDTO(model);
+    public ResultDTO<UserDTO> get(@PathVariable final Long id) {
+        final User model = this.userService.get(id);
+        ResultDTO<UserDTO> resultDTO = this.userConvertor.toResultDTO(model);
+        return resultDTO;
     }
 
     /**
      * 新建操作
      *
-     * @param @model@DTO 新建资源的DTO
+     * @param userDTO 新建资源的DTO
      * @return 新建资源
      */
     @RequestMapping(method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResultDTO<@Model@DTO> create(@RequestBody @Valid final @Model@DTO @model@DTO) {
-        final @Model@ model = this.@model@Convertor.toModel(@model@DTO);
-        this.@model@Service.create(model);
-        return this.@model@Convertor.toResultDTO(model);
+    public ResultDTO<UserDTO> create(@RequestBody @Valid final UserDTO userDTO) {
+        final User model = this.userConvertor.toModel(userDTO);
+        this.userService.create(model);
+        return this.userConvertor.toResultDTO(model);
     }
     
     /**
      * 更新操作
      *
      * @param id 更新资源的ID
-     * @param @model@DTO 更新资源的DTO
+     * @param userDTO 更新资源的DTO
      * @return 更新后资源
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResultDTO<@Model@DTO> update(@PathVariable final Long id, @RequestBody @Valid final @Model@DTO @model@DTO) {
-        @model@DTO.setId(id);
-        final @Model@ model = this.@model@Convertor.toModel(@model@DTO);
-        this.@model@Service.update(model);
-        return this.@model@Convertor.toResultDTO(model);
+    public ResultDTO<UserDTO> update(@PathVariable final Long id, @RequestBody @Valid final UserDTO userDTO) {
+        userDTO.setId(id);
+        final User model = this.userConvertor.toModel(userDTO);
+        this.userService.update(model);
+        return this.userConvertor.toResultDTO(model);
     }
 
     /**
@@ -97,7 +97,7 @@ public class @Model@Controller {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_VALUE)
     public ResultDTO<Void> delete(@PathVariable final Long id) {
-        this.@model@Service.delete(id);
+        this.userService.delete(id);
         return ResultDTO.success();
     }
 }

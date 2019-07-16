@@ -3,40 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
+        <artifactId>flash-sale-api</artifactId>
         <groupId>art.redoc</groupId>
-        <artifactId>flash-sale</artifactId>
         <version>0.1.0</version>
         <relativePath>..</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>flash-sale-web</artifactId>
+    <artifactId>flash-sale-api-idgenerator</artifactId>
+    <version>0.1.0</version>
 
     <dependencies>
         <dependency>
             <groupId>art.redoc</groupId>
-            <artifactId>flash-sale-common</artifactId>
-            <version>0.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>art.redoc</groupId>
-            <artifactId>flash-sale-api-idgenerator</artifactId>
+            <artifactId>core</artifactId>
             <version>0.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
     </dependencies>
-
 </project>

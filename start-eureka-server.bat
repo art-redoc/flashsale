@@ -1,0 +1,1 @@
+java -jar phili-eureka-server-2.0.4.RELEASE.jar

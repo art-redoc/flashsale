@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>redoc.sq.study</groupId>
+    <groupId>art.redoc</groupId>
     <artifactId>flash-sale</artifactId>
     <packaging>pom</packaging>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,13 +23,29 @@
 
     <modules>
         <module>flash-sale-web</module>
+        <module>flash-sale-id-generator</module>
+        <module>flash-sale-api</module>
+        <module>flash-sale-common</module>
     </modules>
 
     <dependencies>
+        <dependency>
+            <groupId>art.redoc</groupId>
+            <artifactId>core</artifactId>
+            <version>0.1.0</version>
+        </dependency>
         <!-- starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

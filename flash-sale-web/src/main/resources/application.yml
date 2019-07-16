@@ -1,3 +1,11 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+
 spring:
   application:
     name: web-service

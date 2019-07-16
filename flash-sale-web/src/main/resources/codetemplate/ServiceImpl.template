@@ -25,7 +25,7 @@ public class @Model@ServiceImpl implements @Model@Service {
 
     @Override
     @Transactional(readOnly = true)
-    public @Model@ get(@NonNull String id) {
+    public @Model@ get(@NonNull Long id) {
         final @Model@ model = @model@Repository.findById(id).orElseThrow(()-> new CustomRuntimeException(RequestCode.USER_NOT_EXISTS, String.format("id为[%s]资源不存在", id)));
         return model;
     }
@@ -46,7 +46,7 @@ public class @Model@ServiceImpl implements @Model@Service {
     }
 
     @Override
-    public void delete(@NonNull String id) {
+    public void delete(@NonNull Long id) {
         @model@Repository.deleteById(id);
     }
 

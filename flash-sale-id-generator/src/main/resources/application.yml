@@ -1,0 +1,11 @@
+server:
+  port: 8999
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+
+spring:
+  application:
+    name: idgenerator-service

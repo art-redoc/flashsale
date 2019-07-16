@@ -1,7 +1,10 @@
-package @Package@;
+package art.redoc.controller;
 
 import javax.validation.Valid;
 
+import art.redoc.convertor.GoodsConvertor;
+import art.redoc.dto.GoodsDTO;
+import art.redoc.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.data.domain.Page;
@@ -12,30 +15,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.morefun.phili.common.common.dto.PageResultDTO;
-import com.morefun.phili.common.common.dto.ResultDTO;
 
-import @ConvertorPath@;
-import @DTOPath@;
-import @ModelPath@;
-import @ServicePath@;
-import @RepositoryPath@;
+import art.redoc.core.dto.PageResultDTO;
+import art.redoc.core.dto.ResultDTO;
+import art.redoc.model.Goods;
+import art.redoc.repository.GoodsRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @Model@的管理接口
+ * Goods的管理接口
  *
  * @author auto
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/@model@")
-public class @Model@Controller {
+@RequestMapping("/api/goods")
+public class GoodsController {
     @Autowired
-    private @Model@Service @model@Service;
+    private GoodsService goodsService;
     @Autowired
-    private @Model@Convertor @model@Convertor;
+    private GoodsConvertor goodsConvertor;
+    @Autowired
+    private GoodsRepository goodsRepository;
 
     /**
      * 获取分页数据
@@ -44,9 +46,9 @@ public class @Model@Controller {
      * @return 分页数据
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public PageResultDTO<@Model@DTO> search(final Pageable pageable) {
-        final Page<@Model@> models = this.@model@Repository.findAll(pageable);
-        return this.@model@Convertor.toResultDTO(models);
+    public PageResultDTO<GoodsDTO> search(final Pageable pageable) {
+        final Page<Goods> models = this.goodsRepository.findAll(pageable);
+        return this.goodsConvertor.toResultDTO(models);
     }
 
     /**
@@ -56,37 +58,37 @@ public class @Model@Controller {
      * @return 资源详细
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResultDTO<@Model@DTO> get(@PathVariable final Long id) {
-        final @Model@ model = this.@model@Service.get(id);
-        return this.@model@Convertor.toResultDTO(model);
+    public ResultDTO<GoodsDTO> get(@PathVariable final Long id) {
+        final Goods model = this.goodsService.get(id);
+        return this.goodsConvertor.toResultDTO(model);
     }
 
     /**
      * 新建操作
      *
-     * @param @model@DTO 新建资源的DTO
+     * @param goodsDTO 新建资源的DTO
      * @return 新建资源
      */
     @RequestMapping(method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResultDTO<@Model@DTO> create(@RequestBody @Valid final @Model@DTO @model@DTO) {
-        final @Model@ model = this.@model@Convertor.toModel(@model@DTO);
-        this.@model@Service.create(model);
-        return this.@model@Convertor.toResultDTO(model);
+    public ResultDTO<GoodsDTO> create(@RequestBody @Valid final GoodsDTO goodsDTO) {
+        final Goods model = this.goodsConvertor.toModel(goodsDTO);
+        this.goodsService.create(model);
+        return this.goodsConvertor.toResultDTO(model);
     }
     
     /**
      * 更新操作
      *
      * @param id 更新资源的ID
-     * @param @model@DTO 更新资源的DTO
+     * @param goodsDTO 更新资源的DTO
      * @return 更新后资源
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResultDTO<@Model@DTO> update(@PathVariable final Long id, @RequestBody @Valid final @Model@DTO @model@DTO) {
-        @model@DTO.setId(id);
-        final @Model@ model = this.@model@Convertor.toModel(@model@DTO);
-        this.@model@Service.update(model);
-        return this.@model@Convertor.toResultDTO(model);
+    public ResultDTO<GoodsDTO> update(@PathVariable final Long id, @RequestBody @Valid final GoodsDTO goodsDTO) {
+        goodsDTO.setId(id);
+        final Goods model = this.goodsConvertor.toModel(goodsDTO);
+        this.goodsService.update(model);
+        return this.goodsConvertor.toResultDTO(model);
     }
 
     /**
@@ -97,7 +99,7 @@ public class @Model@Controller {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_VALUE)
     public ResultDTO<Void> delete(@PathVariable final Long id) {
-        this.@model@Service.delete(id);
+        this.goodsService.delete(id);
         return ResultDTO.success();
     }
 }
