@@ -1,6 +1,6 @@
 package art.redoc.service.impl;
 
-import art.redoc.core.conts.RequestCode;
+import art.redoc.common.conts.RequestCode;
 import art.redoc.core.exceptions.CoreRuntimeException;
 import art.redoc.model.Goods;
 import art.redoc.repository.GoodsRepository;

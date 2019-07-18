@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 public interface SnowFlakeGeneratorApi {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    ResultDTO<Long> generator() throws Exception;
+    @RequestMapping(value = "/idgenerator-service/id", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    ResultDTO<Long> generator();
 }

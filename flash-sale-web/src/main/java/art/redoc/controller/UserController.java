@@ -47,7 +47,6 @@ public class UserController {
         final Page<User> models = this.userRepository.findAll(pageable);
         return this.userConvertor.toResultDTO(models);
     }
-
     /**
      * 取得详细数据
      *

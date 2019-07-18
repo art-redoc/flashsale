@@ -6,6 +6,10 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8888/eureka/
 
+feign:
+  hystrix:
+    enabled: true
+
 spring:
   application:
     name: web-service
