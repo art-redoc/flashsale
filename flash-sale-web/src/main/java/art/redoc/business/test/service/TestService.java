@@ -1,9 +1,8 @@
 package art.redoc.business.test.service;
 
+import art.redoc.business.test.model.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import art.redoc.business.test.model.Test;
 
 import java.util.List;
 
@@ -51,7 +50,7 @@ public interface TestService {
      * @return 修改后的对象
      */
     Test update(Test model);
-    
+
     /**
      * 删除
      *

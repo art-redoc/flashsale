@@ -1,13 +1,12 @@
 package art.redoc.business.test.convertor;
 
+import art.redoc.business.test.dto.TestDTO;
+import art.redoc.business.test.model.Test;
+import art.redoc.business.test.service.TestService;
 import art.redoc.core.convertors.AbstractConvertor;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import art.redoc.business.test.dto.TestDTO;
-import art.redoc.business.test.model.Test;
-import art.redoc.business.test.service.TestService;
 
 /**
  * TestConvertor
@@ -17,7 +16,7 @@ public class TestConvertor extends AbstractConvertor<Test, TestDTO> {
 
     @Autowired
     private TestService testService;
-    
+
     @Override
     public Test toModel(@NonNull final TestDTO dto) {
         if (dto.isNew()) {//新增
