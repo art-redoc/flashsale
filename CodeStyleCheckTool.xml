@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CodeStyleChecker>
+    <SourceDir>C:\code\other_code\flashsale\flash-sale-web\src</SourceDir>
+    <FileInclusion>
+        src/main/java/com/openjaw/api/ResourceBundleConfig.java
+        src/main/java/com/openjaw/api/beans/OJResourceBundleMessageSource.java
+        src/main/java/com/openjaw/api/controller/MfaApiController.java
+    </FileInclusion>
+    <FileExclusion>
+        ErrorCodes.java
+        ConfigService.java
+        TestHelper.java
+        RequestInfoInterceptor.java
+        RequestInfoInterceptorTest.java
+        UserApiIntegrationTestBase.java
+        FileTestHelper.java
+        PosService.groovy
+        PosServiceTest.groovy
+        ObjectAccessService.java
+        DateTimeFormatterService.java
+        DateTimeFormatterServiceTest.groovy
+        AsyncConfig.java
+    </FileExclusion>
+    <FileExclusionPattern>^.*(Controller).*$</FileExclusionPattern>
+</CodeStyleChecker>

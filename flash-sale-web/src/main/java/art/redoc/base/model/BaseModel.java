@@ -1,7 +1,7 @@
 package art.redoc.base.model;
 
 import art.redoc.core.model.AbstractGeneralModel;
-import art.redoc.model.User;
+import art.redoc.business.goods.model.User;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

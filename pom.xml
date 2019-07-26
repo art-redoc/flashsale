@@ -34,6 +34,11 @@
             <artifactId>core</artifactId>
             <version>0.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>art.redoc</groupId>
+            <artifactId>code-generation</artifactId>
+            <version>0.1.0</version>
+        </dependency>
         <!-- starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,6 +61,11 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
         </dependency>
         <dependency>
             <groupId>commons-dbutils</groupId>
