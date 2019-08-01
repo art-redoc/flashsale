@@ -1,9 +1,9 @@
 package art.redoc.business.goods.dto;
 
 import art.redoc.base.dto.AbstractAuditDTO;
+
 import lombok.Getter;
 import lombok.Setter;
-import art.redoc.business.goods.model.Goods;
 
 import java.time.LocalDateTime;
 
@@ -11,9 +11,10 @@ import java.time.LocalDateTime;
 @Setter
 public class FlashSalePlanDTO extends AbstractAuditDTO {
 
-    private Goods goods;
+    private Long goodsId;
 
     private LocalDateTime triggerTime;
 
     private Integer amount;
+
 }

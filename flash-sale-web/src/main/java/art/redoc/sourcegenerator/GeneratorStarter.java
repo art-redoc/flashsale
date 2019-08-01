@@ -4,8 +4,8 @@ import art.redoc.SourceGenerator;
 
 public class GeneratorStarter {
     public static void main(String[] args) throws ClassNotFoundException {
-        SourceGenerator.generate("art.redoc.business.test.model",
-                new String[]{"Test"},
+        SourceGenerator.generate("art.redoc.business.goods.model",
+                new String[]{"FlashSalePlan"},
                 "model",
                 SourceGenerator.Output.FILE,
                 true,
