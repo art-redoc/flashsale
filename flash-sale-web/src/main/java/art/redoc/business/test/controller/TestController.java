@@ -21,7 +21,7 @@ import art.redoc.business.test.service.TestService;
 import javax.validation.Valid;
 
 /**
- * Test Controller.
+ * Test controller.
  *
  * @author code generator
  */

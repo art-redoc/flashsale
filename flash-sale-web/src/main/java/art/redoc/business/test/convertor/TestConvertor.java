@@ -10,7 +10,7 @@ import art.redoc.business.test.model.Test;
 import art.redoc.business.test.service.TestService;
 
 /**
- * Test Convertor.
+ * Test convertor.
  *
  * @author code generator
  */
