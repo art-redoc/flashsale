@@ -1,20 +1,24 @@
 package art.redoc.business.goods.service.impl;
 
-import art.redoc.common.conts.RequestCode;
+import art.redoc.core.conts.CoreResponseCode;
 import art.redoc.core.exceptions.CoreRuntimeException;
-import art.redoc.business.goods.service.UserService;
-import art.redoc.business.goods.model.User;
-import art.redoc.business.goods.repository.UserRepository;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import art.redoc.business.goods.model.User;
+import art.redoc.business.goods.repository.UserRepository;
+import art.redoc.business.goods.service.UserService;
 
 import java.util.List;
 
 /**
- * UserService 实现类
+ * User service implement.
+ *
+ * @author code generator
  */
 @Slf4j
 @Service
@@ -24,10 +28,16 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    @Transactional(readOnly = true)
     public User get(@NonNull Long id) {
-        final User model = userRepository.findById(id).orElseThrow(()-> new CoreRuntimeException(RequestCode.USER_NOT_EXISTS, String.format("id为[%s]资源不存在", id)));
+        final User model = userRepository.findById(id).orElseThrow(() ->
+                new CoreRuntimeException(CoreResponseCode.RESOURCE_NOT_EXISTS,
+                        String.format("The resource with id [%s] does not exist.", id)));
         return model;
+    }
+
+    @Override
+    public Page<User> getAll(Pageable pageable) {
+        return this.userRepository.findAll(pageable);
     }
 
     @Override

@@ -5,7 +5,7 @@ import art.redoc.SourceGenerator;
 public class GeneratorStarter {
     public static void main(String[] args) throws ClassNotFoundException {
         SourceGenerator.generate("art.redoc.business.goods.model",
-                new String[]{"FlashSalePlan"},
+                new String[]{"User"},
                 "model",
                 SourceGenerator.Output.FILE,
                 true,

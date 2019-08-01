@@ -1,28 +1,30 @@
 package art.redoc.business.goods.convertor;
 
 import art.redoc.core.convertors.AbstractConvertor;
-import art.redoc.business.goods.dto.UserDTO;
-import art.redoc.business.goods.service.UserService;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import art.redoc.business.goods.dto.UserDTO;
 import art.redoc.business.goods.model.User;
-import lombok.NonNull;
+import art.redoc.business.goods.service.UserService;
 
 /**
- * UserConvertor
+ * User convertor.
+ *
+ * @author code generator
  */
 @Component
 public class UserConvertor extends AbstractConvertor<User, UserDTO> {
 
     @Autowired
     private UserService userService;
-    
+
     @Override
     public User toModel(@NonNull final UserDTO dto) {
-        if (dto.isNew()) {//新增
+        if (dto.isNew()) {
             return constructModel(dto);
-        } else {//更新
+        } else {
             return updateModel(dto);
         }
     }
@@ -32,10 +34,16 @@ public class UserConvertor extends AbstractConvertor<User, UserDTO> {
         final UserDTO dto = new UserDTO();
         dto.setId(model.getId());
         dto.setName(model.getName());
+
         return dto;
     }
 
-    // 构建新Model
+    /**
+     * Build the new model by DTO.
+     *
+     * @param dto DTO.
+     * @return The newly built model.
+     */
     private User constructModel(final UserDTO dto) {
         User model = new User();
         model.setName(dto.getName());
@@ -43,7 +51,12 @@ public class UserConvertor extends AbstractConvertor<User, UserDTO> {
         return model;
     }
 
-    // 更新Model
+    /**
+     * Update the model by DTO.
+     *
+     * @param dto DTO.
+     * @return The updated model.
+     */
     private User updateModel(final UserDTO dto) {
         User model = userService.get(dto.getId());
         model.setName(dto.getName());

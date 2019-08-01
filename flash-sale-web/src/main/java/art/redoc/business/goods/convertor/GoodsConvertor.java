@@ -1,28 +1,30 @@
 package art.redoc.business.goods.convertor;
 
-import art.redoc.business.goods.dto.GoodsDTO;
+import art.redoc.core.convertors.AbstractConvertor;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import art.redoc.core.convertors.AbstractConvertor;
+import art.redoc.business.goods.dto.GoodsDTO;
 import art.redoc.business.goods.model.Goods;
 import art.redoc.business.goods.service.GoodsService;
-import lombok.NonNull;
 
 /**
- * GoodsConvertor
+ * Goods convertor.
+ *
+ * @author code generator
  */
 @Component
 public class GoodsConvertor extends AbstractConvertor<Goods, GoodsDTO> {
 
     @Autowired
     private GoodsService goodsService;
-    
+
     @Override
     public Goods toModel(@NonNull final GoodsDTO dto) {
-        if (dto.isNew()) {//新增
+        if (dto.isNew()) {
             return constructModel(dto);
-        } else {//更新
+        } else {
             return updateModel(dto);
         }
     }
@@ -36,7 +38,12 @@ public class GoodsConvertor extends AbstractConvertor<Goods, GoodsDTO> {
         return dto;
     }
 
-    // 构建新Model
+    /**
+     * Build the new model by DTO.
+     *
+     * @param dto DTO.
+     * @return The newly built model.
+     */
     private Goods constructModel(final GoodsDTO dto) {
         Goods model = new Goods();
         model.setName(dto.getName());
@@ -44,7 +51,12 @@ public class GoodsConvertor extends AbstractConvertor<Goods, GoodsDTO> {
         return model;
     }
 
-    // 更新Model
+    /**
+     * Update the model by DTO.
+     *
+     * @param dto DTO.
+     * @return The updated model.
+     */
     private Goods updateModel(final GoodsDTO dto) {
         Goods model = goodsService.get(dto.getId());
         model.setName(dto.getName());

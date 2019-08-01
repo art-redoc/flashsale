@@ -1,57 +1,70 @@
 package art.redoc.business.goods.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import art.redoc.business.goods.model.GoodsOrder;
 
 import java.util.List;
 
 /**
- * GoodsOrderService
+ * GoodsOrder service.
+ *
+ * @author code generator
  */
 public interface GoodsOrderService {
 
     /**
-     * 根据ID获取资源
+     * Get model by unique ID.
      *
-     * @param id 资源实例ID
-     * @return id所指向的资源实例
+     * @param id Unique ID.
+     * @return Resource.
      */
     GoodsOrder get(Long id);
 
     /**
-     * 创建
+     * Get all resource.
      *
-     * @param model 资源实例
-     * @return 创建后的对象
+     * @param pageable Paging related params.
+     * @return List resources.
+     */
+    Page<GoodsOrder> getAll(final Pageable pageable);
+
+    /**
+     * Create model.
+     *
+     * @param model The model needs to be created.
+     * @return The model that has been created.
      */
     GoodsOrder create(GoodsOrder model);
 
     /**
-     * 批量创建
+     * Create models in batches.
      *
-     * @param models 资源实例
-     * @return 创建后的对象
+     * @param models Model list.
+     * @return List of models that have been created.
      */
     List<GoodsOrder> create(List<GoodsOrder> models);
 
     /**
-     * 更新
+     * Update model.
      *
-     * @param model 编辑后的资源实例
-     * @return 修改后的对象
+     * @param model The model needs to be updated.
+     * @return The model that has been updated.
      */
     GoodsOrder update(GoodsOrder model);
-    
+
     /**
-     * 删除
+     * Delete model.
      *
-     * @param id 资源实例ID
+     * @param id Unique ID.
      */
     void delete(Long id);
 
     /**
-     * 批量删除
+     * Delete models in batches.
      *
-     * @param models 资源实例集合
+     * @param models Model list.
      */
     void delete(List<GoodsOrder> models);
 
