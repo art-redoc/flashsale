@@ -1,15 +1,18 @@
 package art.redoc.business.test.convertor;
 
-import art.redoc.business.test.dto.TestDTO;
-import art.redoc.business.test.model.Test;
-import art.redoc.business.test.service.TestService;
 import art.redoc.core.convertors.AbstractConvertor;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import art.redoc.business.test.dto.TestDTO;
+import art.redoc.business.test.model.Test;
+import art.redoc.business.test.service.TestService;
+
 /**
- * TestConvertor
+ * Test Convertor.
+ *
+ * @author code generator
  */
 @Component
 public class TestConvertor extends AbstractConvertor<Test, TestDTO> {
@@ -19,9 +22,9 @@ public class TestConvertor extends AbstractConvertor<Test, TestDTO> {
 
     @Override
     public Test toModel(@NonNull final TestDTO dto) {
-        if (dto.isNew()) {//新增
+        if (dto.isNew()) {
             return constructModel(dto);
-        } else {//更新
+        } else {
             return updateModel(dto);
         }
     }
@@ -43,7 +46,12 @@ public class TestConvertor extends AbstractConvertor<Test, TestDTO> {
         return dto;
     }
 
-    // 构建新Model
+    /**
+     * Build the new model by DTO.
+     *
+     * @param dto DTO.
+     * @return The newly built model.
+     */
     private Test constructModel(final TestDTO dto) {
         Test model = new Test();
         model.setName(dto.getName());
@@ -59,7 +67,12 @@ public class TestConvertor extends AbstractConvertor<Test, TestDTO> {
         return model;
     }
 
-    // 更新Model
+    /**
+     * Update the model by DTO.
+     *
+     * @param dto DTO.
+     * @return The updated model.
+     */
     private Test updateModel(final TestDTO dto) {
         Test model = testService.get(dto.getId());
         model.setName(dto.getName());

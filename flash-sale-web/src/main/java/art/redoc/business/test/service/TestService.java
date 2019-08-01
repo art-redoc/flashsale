@@ -1,67 +1,70 @@
 package art.redoc.business.test.service;
 
-import art.redoc.business.test.model.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import art.redoc.business.test.model.Test;
 
 import java.util.List;
 
 /**
- * TestService
+ * Test service.
+ *
+ * @author code generator
  */
 public interface TestService {
 
     /**
-     * 根据ID获取资源
+     * Get model by unique ID.
      *
-     * @param id 资源实例ID
-     * @return id所指向的资源实例
+     * @param id Unique ID.
+     * @return Resource.
      */
     Test get(Long id);
 
     /**
      * Get all resource.
      *
-     * @param pageable Pageable.
-     * @return
+     * @param pageable Paging related params.
+     * @return List resources.
      */
     Page<Test> getAll(final Pageable pageable);
 
     /**
-     * 创建
+     * Create model.
      *
-     * @param model 资源实例
-     * @return 创建后的对象
+     * @param model The model needs to be created.
+     * @return The model that has been created.
      */
     Test create(Test model);
 
     /**
-     * 批量创建
+     * Create models in batches.
      *
-     * @param models 资源实例
-     * @return 创建后的对象
+     * @param models Model list.
+     * @return List of models that have been created.
      */
     List<Test> create(List<Test> models);
 
     /**
-     * 更新
+     * Update model.
      *
-     * @param model 编辑后的资源实例
-     * @return 修改后的对象
+     * @param model The model needs to be updated.
+     * @return The model that has been updated.
      */
     Test update(Test model);
 
     /**
-     * 删除
+     * Delete model.
      *
-     * @param id 资源实例ID
+     * @param id Unique ID.
      */
     void delete(Long id);
 
     /**
-     * 批量删除
+     * Delete models in batches.
      *
-     * @param models 资源实例集合
+     * @param models Model list.
      */
     void delete(List<Test> models);
 

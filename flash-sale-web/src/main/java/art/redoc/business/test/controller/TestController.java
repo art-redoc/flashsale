@@ -1,9 +1,5 @@
 package art.redoc.business.test.controller;
 
-import art.redoc.business.test.convertor.TestConvertor;
-import art.redoc.business.test.dto.TestDTO;
-import art.redoc.business.test.model.Test;
-import art.redoc.business.test.service.TestService;
 import art.redoc.core.dto.PageResultDTO;
 import art.redoc.core.dto.ResultDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -17,12 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import art.redoc.business.test.convertor.TestConvertor;
+import art.redoc.business.test.dto.TestDTO;
+import art.redoc.business.test.model.Test;
+import art.redoc.business.test.service.TestService;
+
 import javax.validation.Valid;
 
 /**
- * Test的管理接口
+ * Test Controller.
  *
- * @author auto
+ * @author code generator
  */
 @Slf4j
 @RestController
@@ -34,10 +35,10 @@ public class TestController {
     private TestConvertor testConvertor;
 
     /**
-     * 获取分页数据
+     * Get model list.
      *
-     * @param pageable 分页+排序参数
-     * @return 分页数据
+     * @param pageable Paging related params.
+     * @return Model list.
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public PageResultDTO<TestDTO> search(final Pageable pageable) {
@@ -46,10 +47,10 @@ public class TestController {
     }
 
     /**
-     * 取得详细数据
+     * Get detail model by unique ID.
      *
-     * @param id 资源ID
-     * @return 资源详细
+     * @param id Unique ID.
+     * @return Detail model.
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResultDTO<TestDTO> get(@PathVariable final Long id) {
@@ -58,10 +59,10 @@ public class TestController {
     }
 
     /**
-     * 新建操作
+     * Create model.
      *
-     * @param testDTO 新建资源的DTO
-     * @return 新建资源
+     * @param testDTO The model DTO.
+     * @return DTO of the model that needs to be created.
      */
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResultDTO<TestDTO> create(@RequestBody @Valid final TestDTO testDTO) {
@@ -71,25 +72,25 @@ public class TestController {
     }
 
     /**
-     * 更新操作
+     * Update model.
      *
-     * @param id      更新资源的ID
-     * @param testDTO 更新资源的DTO
-     * @return 更新后资源
+     * @param id  Unique ID.
+     * @param dto DTO of the model that needs to be updated.
+     * @return Updated model DTO.
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResultDTO<TestDTO> update(@PathVariable final Long id, @RequestBody @Valid final TestDTO testDTO) {
-        testDTO.setId(id);
-        final Test model = this.testConvertor.toModel(testDTO);
+    public ResultDTO<TestDTO> update(@PathVariable final Long id, @RequestBody @Valid final TestDTO dto) {
+        dto.setId(id);
+        final Test model = this.testConvertor.toModel(dto);
         this.testService.update(model);
         return this.testConvertor.toResultDTO(model);
     }
 
     /**
-     * 删除操作
+     * Delete model.
      *
-     * @param id 资源ID
-     * @return 操作结果
+     * @param id Unique ID.
+     * @return The result of the model being deleted.
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResultDTO<Void> delete(@PathVariable final Long id) {

@@ -1,6 +1,7 @@
 package art.redoc.business.test.dto;
 
 import art.redoc.base.dto.AbstractAuditDTO;
+
 import art.redoc.business.test.enums.TestEnum;
 import lombok.Getter;
 import lombok.Setter;

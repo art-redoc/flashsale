@@ -1,8 +1,5 @@
 package art.redoc.business.test.service.impl;
 
-import art.redoc.business.test.model.Test;
-import art.redoc.business.test.repository.TestRepository;
-import art.redoc.business.test.service.TestService;
 import art.redoc.core.conts.CoreResponseCode;
 import art.redoc.core.exceptions.CoreRuntimeException;
 import lombok.NonNull;
@@ -12,10 +9,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import art.redoc.business.test.model.Test;
+import art.redoc.business.test.repository.TestRepository;
+import art.redoc.business.test.service.TestService;
+
 import java.util.List;
 
 /**
- * TestService 实现类
+ * Test service implement.
+ *
+ * @author code generator
  */
 @Slf4j
 @Service
@@ -27,7 +30,7 @@ public class TestServiceImpl implements TestService {
     @Override
     public Test get(@NonNull Long id) {
         final Test model = testRepository.findById(id).orElseThrow(() ->
-                new CoreRuntimeException(CoreResponseCode.RESOURCE_NOT_EXISTS, String.format("id为[%s]资源不存在", id)));
+                new CoreRuntimeException(CoreResponseCode.RESOURCE_NOT_EXISTS, String.format("The resource with id [%s] does not exist.", id)));
         return model;
     }
 
