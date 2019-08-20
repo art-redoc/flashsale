@@ -1,6 +1,7 @@
 package art.redoc.business.goods.controller;
 
 import art.redoc.base.feign.SnowFlakeGeneratorApiFeign;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,7 +47,7 @@ public class RedocController {
         String content;
         try {
             final InputStream is = new FileInputStream("C:\\code\\other_code\\flashsale\\flash-sale-web\\src\\main\\java\\art\\redoc" +
-                    "\\model\\Test.java");
+                    "\\business\\test\\model\\Test.java");
             final ByteArrayOutputStream os = new ByteArrayOutputStream();
             IOUtils.copy(is, os);
             content = os.toString("UTF-8");
@@ -128,7 +129,14 @@ public class RedocController {
 //        System.out.println(toBeRemoved);
         String x = "import com.fasterxml.jackson.annotation.JsonIgnore;";
 //        System.out.println(x.substring(x.lastIndexOf(".") + 1, x.indexOf(";")));
-        System.out.println(Pattern.matches("\\s+private+.+;","    private String name;"));
+//        System.out.println(Pattern.matches("\\s+private+.+;","    private String name;"));
+
+        System.out.println(Pattern.matches("(?!import)(?!package).*[^a-zA-Z\\d]" + "Getter" + "[^a-zA-Z\\d].*",
+                "@Getter"));
+//        System.out.println(Pattern.matches("(?!import)(?!package).*[^a-zA-Z\\d]" + "JsonIgnore" + "[^a-zA-Z\\d].*",
+//                "@JsonIgnoreProperties({\"handler\", \"hibernateLazyInitializer\" })"));
+//                "import asd.asd.asd.SexEnum;"));
+//        System.out.println(Pattern.matches("",""));
     }
 
     public enum IpStateEnum {

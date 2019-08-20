@@ -9,5 +9,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author code generator
  */
 public interface UserRepository extends JpaRepository<User, Long> {
-
 }

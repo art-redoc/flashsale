@@ -30,3 +30,5 @@ classes
 .settings
 .classpath
 .project
+
+CodeStyleCheckTool.xml

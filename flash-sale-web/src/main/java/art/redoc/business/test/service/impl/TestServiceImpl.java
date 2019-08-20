@@ -30,7 +30,8 @@ public class TestServiceImpl implements TestService {
     @Override
     public Test get(@NonNull Long id) {
         final Test model = testRepository.findById(id).orElseThrow(() ->
-                new CoreRuntimeException(CoreResponseCode.RESOURCE_NOT_EXISTS, String.format("The resource with id [%s] does not exist.", id)));
+                new CoreRuntimeException(CoreResponseCode.RESOURCE_NOT_EXISTS,
+                        String.format("The resource with id [%s] does not exist.", id)));
         return model;
     }
 

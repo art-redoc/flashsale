@@ -34,6 +34,7 @@ public class TestDTO extends AbstractAuditDTO {
 
     private String content;
 
+    @org.hibernate.annotations.Type(type = "yes_no")
     private Boolean isDefault;
 
     private Timestamp acceptTime;

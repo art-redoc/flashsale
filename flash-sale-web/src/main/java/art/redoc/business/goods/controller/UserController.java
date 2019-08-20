@@ -31,6 +31,7 @@ import javax.validation.Valid;
 public class UserController {
     @Autowired
     private UserService userService;
+
     @Autowired
     private UserConvertor userConvertor;
 

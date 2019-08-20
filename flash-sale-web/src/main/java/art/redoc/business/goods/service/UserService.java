@@ -67,5 +67,4 @@ public interface UserService {
      * @param models Model list.
      */
     void delete(List<User> models);
-
 }

@@ -61,6 +61,7 @@ public class SnowFlakeGeneratorService {
         // if current time equals last time, add the sequence.
         if (lastTimestamp == timestamp) {
             // if sequence more than maxSequencePerMillisecond, set the sequence to 0, else add the sequence.
+            // e.g. 100000000000(4096) & 011111111111(4095) = 0
             sequence = (sequence + 1) & maxSequencePerMillisecond;
             // if sequence equals 0, blocking the thread until the next time.
             if (sequence == 0) {
