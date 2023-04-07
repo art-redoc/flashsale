@@ -1,11 +1,11 @@
 package art.redoc.business.goods.convertor;
 
 import art.redoc.core.convertors.AbstractConvertor;
+import art.redoc.dto.goods.dto.FlashSalePlanDTO;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import art.redoc.business.goods.dto.FlashSalePlanDTO;
 import art.redoc.business.goods.model.FlashSalePlan;
 import art.redoc.business.goods.service.FlashSalePlanService;
 
@@ -19,6 +19,8 @@ public class FlashSalePlanConvertor extends AbstractConvertor<FlashSalePlan, Fla
 
     @Autowired
     private FlashSalePlanService flashSalePlanService;
+    @Autowired
+    private GoodsConvertor goodsConvertor;
 
     @Override
     public FlashSalePlan toModel(@NonNull final FlashSalePlanDTO dto) {
@@ -35,7 +37,9 @@ public class FlashSalePlanConvertor extends AbstractConvertor<FlashSalePlan, Fla
         dto.setId(model.getId());
         dto.setTriggerTime(model.getTriggerTime());
         dto.setAmount(model.getAmount());
-
+        if(forListView){
+            dto.setGoods(goodsConvertor.toDTO(model.getGoods()));
+        }
         return dto;
     }
 

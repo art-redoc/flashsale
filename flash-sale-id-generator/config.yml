@@ -1,0 +1,8 @@
+startDelaySeconds: 0
+hostPort: 127.0.0.1:10702
+username: 
+password: 
+# jmxUrl: service:jmx:rmi:///jndi/rmi://127.0.0.1:10702/jmxrmi
+ssl: false
+lowercaseOutputName: false
+lowercaseOutputLabelNames: false

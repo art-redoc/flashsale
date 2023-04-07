@@ -68,4 +68,7 @@ public interface FlashSalePlanService {
      */
     void delete(List<FlashSalePlan> models);
 
+    FlashSalePlan createPlan(FlashSalePlan model);
+
+    void updateStatusToFinishedAndAmountZero(Long id);
 }

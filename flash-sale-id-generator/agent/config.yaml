@@ -1,0 +1,4 @@
+startDelaySeconds: 0
+hostPort: 192.168.22.122:10800
+lowercaseOutputName: false
+lowercaseOutputLabelNames: false

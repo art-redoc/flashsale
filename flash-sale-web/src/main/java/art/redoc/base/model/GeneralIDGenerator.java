@@ -18,7 +18,7 @@ public class GeneralIDGenerator implements IdentifierGenerator {
     @Override
     public Serializable generate(SharedSessionContractImplementor sharedSessionContractImplementor, Object o) {
         final ResultDTO<Long> result;
-        result = SpringUtils.getBeanByType(SnowFlakeGeneratorApiFeign.class).generator();
+        result = SpringUtils.getBeanByType(SnowFlakeGeneratorApi.class).generator();
 
         if (result.isSuccess()) {
             return result.getData();

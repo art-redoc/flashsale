@@ -1,0 +1,1 @@
+java -javaagent:./jmx_prometheus_javaagent-0.12.0.jar=10702:./config.yaml -jar flash-sale-id-generator-0.1.0.jar

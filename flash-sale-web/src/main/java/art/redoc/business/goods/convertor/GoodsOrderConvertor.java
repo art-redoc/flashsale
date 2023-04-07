@@ -1,11 +1,11 @@
 package art.redoc.business.goods.convertor;
 
 import art.redoc.core.convertors.AbstractConvertor;
+import art.redoc.dto.goods.dto.GoodsOrderDTO;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import art.redoc.business.goods.dto.GoodsOrderDTO;
 import art.redoc.business.goods.model.GoodsOrder;
 import art.redoc.business.goods.service.GoodsOrderService;
 

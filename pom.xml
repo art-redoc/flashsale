@@ -23,9 +23,13 @@
 
     <modules>
         <module>flash-sale-web</module>
+        <module>flash-sale-third-part</module>
         <module>flash-sale-id-generator</module>
         <module>flash-sale-api</module>
         <module>flash-sale-common</module>
+        <module>flash-sale-consumer</module>
+        <module>flash-sale-consumer-email</module>
+        <module>flash-sale-dto</module>
     </modules>
 
     <dependencies>

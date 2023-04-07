@@ -6,7 +6,6 @@
         <artifactId>flash-sale</artifactId>
         <groupId>art.redoc</groupId>
         <version>0.1.0</version>
-        <relativePath>..</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,10 +14,15 @@
     <version>0.1.0</version>
     <modules>
         <module>flash-sale-api-idgenerator</module>
+        <module>flash-sale-api-web</module>
     </modules>
 
     <dependencies>
-
+        <dependency>
+            <groupId>art.redoc</groupId>
+            <artifactId>flash-sale-dto</artifactId>
+            <version>0.1.0</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,0 +1,63 @@
+server:
+  port: 9001
+
+logging:
+  level:
+    root: info
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+
+spring:
+  application:
+    name: consumer-email-service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/flashsale?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&autoReconnect=true
+    #url: jdbc:mysql://192.168.1.197:3306/phili?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    #password: root
+    test-while-idle: true
+    max-wait-millis: 30000
+    validation-query: 'SELECT 1'
+    time-between-eviction-runs-millis: 20000
+    min-evictable-idle-time-millis: 28700
+    idle-timeout: 3
+    initial-size: 20
+    max-idle: 50
+    max-activ: 300
+    maximum-pool-size: 350
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    timeout: 5000
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+
+  kafka:
+    producer:
+      bootstrap-servers: 127.0.0.1:9092
+    consumer:
+      group-id: test1

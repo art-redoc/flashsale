@@ -1,7 +1,11 @@
 package art.redoc.business.goods.controller;
 
+import art.redoc.business.goods.convertor.GoodsConvertor;
+import art.redoc.business.goods.model.Goods;
+import art.redoc.business.goods.service.GoodsService;
 import art.redoc.core.dto.PageResultDTO;
 import art.redoc.core.dto.ResultDTO;
+import art.redoc.dto.goods.dto.GoodsDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,11 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import art.redoc.business.goods.convertor.GoodsConvertor;
-import art.redoc.business.goods.dto.GoodsDTO;
-import art.redoc.business.goods.model.Goods;
-import art.redoc.business.goods.service.GoodsService;
 
 import javax.validation.Valid;
 
